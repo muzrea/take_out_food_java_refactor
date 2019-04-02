@@ -23,6 +23,8 @@ public class Main {
             Order order = new Order(processOrder(inputMap));
             String text = printBill(order);
             System.out.println(text);
+            inputStreamReader.close();
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
