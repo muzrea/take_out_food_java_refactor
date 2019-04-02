@@ -25,5 +25,17 @@ public class Tools {
         return inputMap;
     }
 
-
+    public static Map<Dishes, Double> processOrder(Map<String, Double> inputMap) {
+        List<Dishes> allDishes = getAllDishes();
+        Map<Dishes, Double> orderInfo = new HashMap<>();
+        for (Map.Entry<String, Double> entry : inputMap.entrySet()) {
+            for (Dishes dish : allDishes) {
+                if (entry.getKey().equals(dish.getId())) {
+                    orderInfo.put(dish, entry.getValue());
+                }
+            }
+        }
+        return orderInfo;
+    }
+    
 }
