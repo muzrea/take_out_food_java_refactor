@@ -37,5 +37,23 @@ public class Tools {
         }
         return orderInfo;
     }
+
+    public static double getOrderSum(Order myOrder, double discountPrice) {
+        return myOrder.getOrignalPrice() - discountPrice;
+    }
+
+    public static boolean isContainPromotion(Order myOrder) {
+        boolean flag = false;
+        List<Dishes> promotionDishes = getPromotionDishes();
+        for (Map.Entry<Dishes, Double> orderElement : myOrder.getOrderInfo().entrySet()) {
+            for (Dishes promotionDish : promotionDishes) {
+                if (orderElement.getKey().getId().equals(promotionDish.getId())) {
+                    flag = true;
+                }
+            }
+        }
+        return flag;
+    }
+
     
 }
