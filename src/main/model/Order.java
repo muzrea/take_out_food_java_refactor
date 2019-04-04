@@ -15,7 +15,7 @@ public class Order {
     public Map<Dishes,Double> getOrderInfo(){
         return this.orderInfo;
     }
-    public double getOrignalPrice(){
+    public double getOriginalPrice(){
         double originalPrice = 0.00;
         for(Map.Entry<Dishes,Double> entry : this.orderInfo.entrySet()){
             originalPrice += entry.getKey().getPrice()*entry.getValue();

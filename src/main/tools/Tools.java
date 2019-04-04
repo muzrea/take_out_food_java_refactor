@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import static main.model.AllDishes.getAllDishes;
 import static main.model.PromotionDishes.getPromotionDishes;
@@ -39,7 +38,7 @@ public class Tools {
     }
 
     public static double getOrderSum(Order myOrder, double discountPrice) {
-        return myOrder.getOrignalPrice() - discountPrice;
+        return myOrder.getOriginalPrice() - discountPrice;
     }
 
     public static boolean isContainPromotion(Order myOrder) {
@@ -62,12 +61,11 @@ public class Tools {
         }
         goodsText += "-----------------------------------\n";
         HalfPrice half = new HalfPrice();
-        if (myOrder.getOrignalPrice() >= 30 && isContainPromotion(myOrder)) {
+        if (myOrder.getOriginalPrice() >= 30 && isContainPromotion(myOrder)) {
             double halfdiscount = half.getDiscountPrice(myOrder);
-            System.out.println("折扣价"+halfdiscount);
             if (halfdiscount > 6) {
                 List<Dishes> orderDiscountDishes = half.getDiscountDishes(myOrder);
-                double orderSum = myOrder.getOrignalPrice() - halfdiscount;
+                double orderSum = myOrder.getOriginalPrice() - halfdiscount;
                 goodsText += "使用优惠:\n指定菜品半价";
                 for (Dishes d : orderDiscountDishes) {
                     goodsText += d.getName() + ",";
@@ -75,18 +73,18 @@ public class Tools {
                 goodsText += "省" + halfdiscount + "元\n" + "-----------------------------------\n" +
                         "总计: " + orderSum + "元\n" + "===================================";
             } else {
-                double orderSum = myOrder.getOrignalPrice() - 6;
+                double orderSum = myOrder.getOriginalPrice() - 6;
                 goodsText += "使用优惠:\n满30减6元，省6元\n" + "-----------------------------------\n" +
                         "总计: " + orderSum + "元\n" + "===================================";
             }
-        } else if (myOrder.getOrignalPrice() >= 30) {
-            double orderSum = myOrder.getOrignalPrice() - 6;
+        } else if (myOrder.getOriginalPrice() >= 30) {
+            double orderSum = myOrder.getOriginalPrice() - 6;
             goodsText += "使用优惠:\n满30减6元，省6元\n" + "-----------------------------------" +
                     "总计: " + orderSum + "元\n" + "===================================";
         } else if (isContainPromotion(myOrder)) {
             double halfdiscount = half.getDiscountPrice(myOrder);
             List<Dishes> orderDiscountDishes = half.getDiscountDishes(myOrder);
-            double orderSum = myOrder.getOrignalPrice() - halfdiscount;
+            double orderSum = myOrder.getOriginalPrice() - halfdiscount;
             goodsText += "使用优惠:\n指定菜品半价";
             for (Dishes d : orderDiscountDishes) {
                 goodsText += d.getName() + ",";
@@ -94,7 +92,7 @@ public class Tools {
             goodsText += "省" + halfdiscount + "元\n" + "-----------------------------------\n" +
                     "总计: " + orderSum + "元\n" + "===================================";
         } else {
-            goodsText += "总计: " + myOrder.getOrignalPrice() + "元\n" + "===================================";
+            goodsText += "总计: " + myOrder.getOriginalPrice() + "元\n" + "===================================";
         }
         return goodsText;
     }
