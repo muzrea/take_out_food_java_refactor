@@ -1,4 +1,4 @@
-package main.controller;
+package main.service;
 
 import main.model.Dishes;
 import main.model.Order;
