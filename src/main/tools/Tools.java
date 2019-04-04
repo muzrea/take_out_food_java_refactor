@@ -64,7 +64,7 @@ public class Tools {
         if (myOrder.getOriginalPrice() >= 30 && isContainPromotion(myOrder)) {
             double halfdiscount = half.getDiscountPrice(myOrder);
             if (halfdiscount > 6) {
-                List<Dishes> orderDiscountDishes = half.getDiscountDishes(myOrder);
+                List<Dishes> orderDiscountDishes = half.getOrderPromotionDishes();
                 double orderSum = myOrder.getOriginalPrice() - halfdiscount;
                 goodsText += "使用优惠:\n指定菜品半价";
                 for (Dishes d : orderDiscountDishes) {
@@ -83,7 +83,7 @@ public class Tools {
                     "总计: " + orderSum + "元\n" + "===================================";
         } else if (isContainPromotion(myOrder)) {
             double halfdiscount = half.getDiscountPrice(myOrder);
-            List<Dishes> orderDiscountDishes = half.getDiscountDishes(myOrder);
+            List<Dishes> orderDiscountDishes = half.getOrderPromotionDishes();
             double orderSum = myOrder.getOriginalPrice() - halfdiscount;
             goodsText += "使用优惠:\n指定菜品半价";
             for (Dishes d : orderDiscountDishes) {
